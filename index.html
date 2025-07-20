@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>America's Golden Dome</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.1/lottie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.3.0/d3.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">The Times</div>
+        <ul class="nav-links">
+            <li><a href="#lottie-missile-defense">The Threat</a></li>
+            <li><a href="#space-threat">From Space</a></li>
+            <li><a href="#narrative-one">The Scenario</a></li>
+        </ul>
+        <div class="nav-toggle" id="navToggle">&#9776;</div>
+    </nav>
+
+    <div class="story-container">
+
+    <section class="story-section video-background-section" id="goldenStarsVideoSection">
+            <div class="intro-header">
+                <svg viewBox="0 0 1200 300" class="curved-header-svg">
+                    <path id="curve" d="M100,200 C400,0 800,0 1100,200" fill="none" stroke="transparent" />
+                    <text>
+                      <textPath xlink:href="#curve" text-anchor="middle" startOffset="50%">
+                        America's Golden Dome
+                      </textPath>
+                    </text>
+                </svg>
+            </div>
+        <div class="video-sticky-visual">
+            <video class="background-video" id="goldenStarsVideo" autoplay muted playsinline loop>
+                <source src="/Videos/NYCDomeFeather.mp4" type="video/mp4">
+                <source src="/Videos/NYCDomeFeather.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="video-text-overlay-wrapper">
+            <div class="content overlay-text video-step" data-step-index="0" style="align-items: self-end;">
+                <p>Trump wants to build a 'golden dome' to protect America</p>
+            </div>
+        </div>
+    </section>
+        
+    <section class="story-section video-background-section" id="goldenStarsVideoSection">
+        <div class="video-sticky-visual">
+            <video class="background-video" id="goldenStarsVideo" autoplay muted playsinline loop>
+                <source src="/Videos/NYCZoomFeatherEdit.mp4" type="video/mp4">
+                <source src="/Videos/NYCZoomFeatherEdit.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="video-text-overlay-wrapper">
+            <div class="content overlay-text video-step" data-step-index="0">
+                <p>It would be the biggest missile defense system ever.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-section video-background-section" id="goldenStarsVideoSectionTwo">
+        <div class="video-sticky-visual">
+            <video class="background-video" id="goldenStarsVideoTwo" autoplay muted playsinline loop>
+                <source src="/Videos/NYCSpanFeatherEdit.mp4" type="video/mp4">
+                <source src="/Videos/NYCSpanFeatherEdit.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="video-text-overlay-wrapper">
+            <div class="two-column-inline">
+                <div class="content overlay-text video-step" data-step-index="0" style="width:200px; height: 150px;">
+                    <p>Spanning <br/><span>141,300</span> Km²</p>
+                    <span style="margin: 10px;"></span>
+                    <p>Protecting <br/><span>20 million</span> people</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-section lottie-scene" id="story-section text-only">
+        <div class="lottie-animation" data-animation-path="/LottieAnimations/Globe.json"></div>
+        <div class="content overlay-text">
+            <p>He's doing it because the world is becoming more dangerous.</p>
+        </div>
+    </section>
+
+    <section class="story-section video-background-section" id="threat">
+        <div class="video-sticky-visual">
+            <video class="background-video" id="threat" autoplay muted playsinline loop style="object-fit: contain;">
+            <source src="/Videos/CRTEdited.mp4" type="video/mp4">
+            <source src="/Videos/CRTEdited.webm" type="video/webm">
+            Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="video-text-overlay-wrapper">
+            <div class="content overlay-text video-step" data-step-index="0">
+                <p>China and Russia are the biggest threats. Any one of these countries could destroy a city the size of <span>Manhattan.</span>.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-section video-background-section" id="space-threat">
+        <div class="video-sticky-visual">
+            <video class="background-video" id="goldenStarsVideo" autoplay muted playsinline loop>
+                <source src="/Videos/SpaceThreatVideo.mp4" type="video/mp4">
+                <source src="/Videos/SpaceThreatVideo.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="video-text-overlay-wrapper">
+            <div class="content overlay-text video-step" data-step-index="0">
+                <p>But there are also threats from space.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-section text-only">
+        <div class="content">
+            <h2>Here in a hypothetical scenario we show how it would work:</h2>
+        </div>
+    </section>
+
+    <!-- TWO-COLUMN LAYOUT SECTIONS -->
+    <section class="story-section narrative-sequence two-column-layout" id="narrative-one">
+        <div class="visual-column">
+            <div class="video-contained-visual">
+                <video class="contained-video" id="narrativeOneVideo" autoplay muted playsinline loop>
+                    <source src="/Videos/ChinaTaiwanUSRelations.mp4" type="video/mp4">
+                    <source src="/Videos/ChinaTaiwanUSRelations.webm" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+        <div class="content-column">
+            <div class="content">
+                <p>The year is 2030.</p>
+                <p>China has invaded Taiwan prompting US military intervention in Asia.</p>
+            </div>
+        </div>
+    </section>
+
+        <section class="story-section narrative-sequence two-column-layout" id="narrative-two">
+        <div class="visual-column">
+            <div class="video-contained-visual">
+                <video class="contained-video" id="narrativeThreeVideo" autoplay muted playsinline loop>
+                    <source src="/Videos/missile.mp4" type="video/mp4">
+                    <source src="/Videos/missile.webm" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+        <div class="content-column">
+            <div class="content">
+                <p>President Xi does the unthinkable, launching a missile at Los Angeles.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-section narrative-sequence two-column-layout" id="narrative-three">
+        <div class="visual-column">
+            <div class="video-contained-visual">
+                <video class="contained-video" id="narrativeThreeVideo" autoplay muted playsinline loop>
+                    <source src="/Videos/MissileData.mp4" type="video/mp4">
+                    <source src="/Videos/MissileData.webm" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+        <div class="content-column">
+            <div class="content">
+                <p>The missile, travelling at <span>32,000 km/h</span>, will reach LA in <span>30</span> minutes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-section narrative-sequence two-column-layout" id="narrative-four">
+        <div class="visual-column">
+            <div class="video-contained-visual">
+                <video class="contained-video" id="narrativeThreeVideo" autoplay muted playsinline loop>
+                    <source src="/Videos/Satellite.mp4" type="video/mp4">
+                    <source src="/Videos/Satellite.webm" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+        <div class="content-column">
+            <div class="content">
+                <p>Satellites alert the golden dome to the imminent threat.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-section narrative-sequence two-column-layout" id="narrative-five">
+        <div class="visual-column">
+            <div class="lottie-animation" data-animation-path="/LottieAnimations/collision.json"></div>
+        </div>
+        <div class="content-column">
+            <div class="content">
+                <p>A silo of missiles destroys the oncoming threat.</p>
+            </div>
+        </div>
+    </section>
+        <!-- TWO-COLUMN LAYOUT SECTIONS END HERE -->
+
+    <section class="story-section text-only">
+
+        <div class="lottie-animation" data-animation-path="/LottieAnimations/PieChartAccessible.json"></div>
+        <div class="content" style="text-align: center; height: 900px;">
+            <p class="polling-text">Polling shows <span>86%</span> Americans want it.</p>
+        </div>
+    </section>
+
+    <section class="story-section video-background-section" id="Luxembourg">
+        <div class="video-sticky-visual">
+            <video class="background-video" id="goldenStarsVideo" autoplay muted playsinline loop style="object-fit: contain;">
+            <source src="/Videos/DomeLuxPrice.mp4" type="video/mp4">
+            <source src="/Videos/DomeLuxPrice.webm" type="video/webm">
+            Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="video-text-overlay-wrapper" style="justify-content: flex-start;">
+            <div class="content overlay-text video-step" data-step-index="0">
+                <p>But the problem is cost. A golden dome would cost $<span>93.2</span>bn - the equivalent of the GDP of Luxembourg.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="spacer" style="height: 50vh;"></section>
+    </section>
+
+     <script src="main.js"></script>
+</body>
+</html>
