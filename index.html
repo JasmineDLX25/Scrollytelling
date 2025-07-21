@@ -27,7 +27,8 @@
 
     <section class="story-section video-background-section" id="goldenStarsVideoSection">
             <div class="intro-header">
-                <svg viewBox="0 0 1200 300" class="curved-header-svg">
+                <!-- SVG Header for Desktop -->
+                <svg viewBox="0 0 1200 300" class="curved-header-svg desktop-only">
                     <path id="curve" d="M100,200 C400,0 800,0 1100,200" fill="none" stroke="transparent" />
                     <text>
                       <textPath xlink:href="#curve" text-anchor="middle" startOffset="50%">
@@ -35,6 +36,8 @@
                       </textPath>
                     </text>
                 </svg>
+                <!-- Regular H1 Header for Mobile -->
+                <h1 class="intro-title mobile-only">America's Golden Dome</h1>
             </div>
         <div class="video-sticky-visual">
             <video class="background-video" id="goldenStarsVideo" autoplay muted playsinline loop>
@@ -75,19 +78,21 @@
         </div>
         <div class="video-text-overlay-wrapper">
             <div class="two-column-inline">
-                <div class="content overlay-text video-step" data-step-index="0" style="width:200px; height: 150px;">
+                <div class="content overlay-text video-step" data-step-index="0" style="width:200px; height: 150px; justify-content: center;">
                     <p>Spanning <br/><span>141,300</span> Km²</p>
-                    <span style="margin: 10px;"></span>
+                    <span style="margin: 20%;"></span>
                     <p>Protecting <br/><span>20 million</span> people</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="story-section lottie-scene" id="story-section text-only">
+    <section class="story-section lottie-scene" id="story-section text-only" style="min-height: 50vh;">
         <div class="lottie-animation" data-animation-path="/LottieAnimations/Globe.json"></div>
-        <div class="content overlay-text">
-            <p>He's doing it because the world is becoming more dangerous.</p>
+        <div class="lottie-text-overlay-wrapper">
+            <div class="content overlay-text lottie-step"> 
+                <p>He's doing it because the world is becoming more dangerous.</p>
+            </div>
         </div>
     </section>
 
@@ -146,15 +151,9 @@
         </div>
     </section>
 
-        <section class="story-section narrative-sequence two-column-layout" id="narrative-two">
+    <section class="story-section narrative-sequence two-column-layout" id="narrative-two">
         <div class="visual-column">
-            <div class="video-contained-visual">
-                <video class="contained-video" id="narrativeThreeVideo" autoplay muted playsinline loop>
-                    <source src="/Videos/missile.mp4" type="video/mp4">
-                    <source src="/Videos/missile.webm" type="video/webm">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
+            <div class="lottie-animation" data-animation-path="/LottieAnimations/missile.json"></div>
         </div>
         <div class="content-column">
             <div class="content">
@@ -182,13 +181,7 @@
 
     <section class="story-section narrative-sequence two-column-layout" id="narrative-four">
         <div class="visual-column">
-            <div class="video-contained-visual">
-                <video class="contained-video" id="narrativeThreeVideo" autoplay muted playsinline loop>
-                    <source src="/Videos/Satellite.mp4" type="video/mp4">
-                    <source src="/Videos/Satellite.webm" type="video/webm">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
+            <div class="lottie-animation" data-animation-path="/LottieAnimations/Satellite.json"></div>
         </div>
         <div class="content-column">
             <div class="content">
@@ -210,9 +203,8 @@
         <!-- TWO-COLUMN LAYOUT SECTIONS END HERE -->
 
     <section class="story-section text-only">
-
         <div class="lottie-animation" data-animation-path="/LottieAnimations/PieChartAccessible.json"></div>
-        <div class="content" style="text-align: center; height: 900px;">
+        <div class="content">
             <p class="polling-text">Polling shows <span>86%</span> Americans want it.</p>
         </div>
     </section>
@@ -225,7 +217,7 @@
             Your browser does not support the video tag.
             </video>
         </div>
-        <div class="video-text-overlay-wrapper" style="justify-content: flex-start;">
+        <div class="video-text-overlay-wrapper">
             <div class="content overlay-text video-step" data-step-index="0">
                 <p>But the problem is cost. A golden dome would cost $<span>93.2</span>bn - the equivalent of the GDP of Luxembourg.</p>
             </div>
@@ -233,7 +225,7 @@
     </section>
 
     <section class="spacer" style="height: 50vh;"></section>
-    </section>
+    </div>
 
      <script src="main.js"></script>
 </body>
