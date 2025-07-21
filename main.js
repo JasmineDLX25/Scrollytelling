@@ -1,7 +1,5 @@
-// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
-// Store Lottie animations instances to re-render if needed
 const lottieAnimations = {};
 
 // --- Lottie Animations Setup ---

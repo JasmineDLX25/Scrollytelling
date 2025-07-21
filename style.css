@@ -3,13 +3,11 @@
 :root {
     --primary-color: #000000;
     --secondary-color: #ffffff;
-    --accent-color: #FFD700; /* Gold */
+    --accent-color: #FFD700;
     --text-color: #333333;
     --bg-color: #000000;
     --heading-font: 'Playfair Display', serif;
     --body-font: 'Roboto', sans-serif;
-
-    /* Responsive Font Sizes (clamp for fluid typography) */
     --font-size-h1: clamp(2.5rem, 8vw, 4rem);
     --font-size-h2: clamp(1.8rem, 6vw, 2.5rem);
     --font-size-p: clamp(1rem, 2.5vw, 1.2em);
@@ -24,15 +22,19 @@ html, body {
     color: var(--text-color);
     background-color: var(--bg-color);
     scroll-behavior: smooth;
-    /* Ensure no unwanted horizontal scroll */
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Base styles for all elements to use border-box */
 *, *::before, *::after {
     box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 .story-container {
@@ -49,7 +51,7 @@ html, body {
     position: relative;
     box-sizing: border-box;
     z-index: 1;
-    flex-direction: column; /* Default to column for mobile-first approach */
+    flex-direction: column;
 }
 
 .intro {
@@ -59,38 +61,64 @@ html, body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Changed from flex-start to center for better vertical alignment of content */
+    justify-content: center;
     align-items: center;
     padding: 0;
-    position: relative; /* Crucial for absolute positioning of children */
-    overflow: hidden; /* Hide any overflow from the video */
+    position: relative;
+    overflow: hidden;
 }
 
 .intro .content {
-    background-color: transparent; /* No background for the content box */
-    box-shadow: none; /* No shadow for the content box */
-    padding: 0; /* Remove padding from content box, section handles it */
-    max-width: 900px; /* Allow wider content for intro text */
-    width: 100%; /* Fill width */
-    position: relative; /* Establish stacking context */
-    z-index: 10; /* Ensure content is above the video and its overlay */
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
+    max-width: 900px;
+    width: 100%;
+    position: relative;
+    z-index: 10;
 }
 
 .intro-header {
     width: 100%;
     height: min-content;
     font-family: var(--heading-font);
-    font-size: var(--font-size-h1);
     color: var(--accent-color);
     margin-top: 5rem;
     margin-bottom: none;
     line-height: 1.1;
-    position: relative; /* Changed from absolute to relative */
-    z-index: 10; /* Ensure header is above the video */ 
-    max-height: 40px;
-    text {
-        fill: var(--accent-color);
-    }
+    position: relative;
+    z-index: 10;
+    max-height: none;
+}
+
+.curved-header-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.curved-header-svg text {
+    fill: var(--accent-color);
+    font-size: clamp(2.5rem, 8vw, 4rem);
+}
+
+.intro-title {
+    font-family: var(--heading-font);
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    color: var(--accent-color);
+    text-align: center;
+    margin: 0;
+    line-height: 1.1;
+    padding: 20px;
+    display: none;
+}
+
+.desktop-only {
+    display: block;
+}
+
+.mobile-only {
+    display: none;
 }
 
 .header-text{
@@ -101,8 +129,6 @@ html, body {
     z-index: 10;
 }
 
-
-
 .content {
     position: relative;
     z-index: 10;
@@ -110,7 +136,7 @@ html, body {
     border-radius: 8px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     max-width: 800px;
-    text-align: center; /* Default text alignment */
+    text-align: center;
     margin: 20px auto;
     width: calc(100% - 40px);
 }
@@ -144,22 +170,12 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: 1; /* These are backgrounds, so lower z-index */
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.lottie-scene,
-.narrative-sequence {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-}
-
-/* Ensure Lottie player fills its container, scale down on smaller screens */
 .lottie-animation > div {
     width: 100%;
     height: 100%;
@@ -176,7 +192,6 @@ html, body {
     height: 100%;
 }
 
-
 canvas {
     display: block;
     width: 100%;
@@ -186,7 +201,6 @@ canvas {
     object-fit: contain;
 }
 
-/* --- Navigation Bar Styling --- */
 .navbar {
     position: fixed;
     top: 0;
@@ -243,133 +257,160 @@ canvas {
     padding: 5px 10px;
 }
 
-/* Adjustments for content to not be hidden behind fixed navbar */
 body {
     padding-top: 60px;
 }
 
-/* Overlay for the header video in the intro section and other video background sections */
 .intro::before,
-.video-background-section::before {
+.video-background-section::before,
+.lottie-scene::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* Gradient from transparent to primary-color (black) at top/bottom */
     background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%);
-    z-index: 5; /* Between video (1) and content (10) */
-    pointer-events: none; /* Allow interaction with elements below */
+    z-index: 5;
+    pointer-events: none;
 }
 
-/* Header Video Styling (for the intro section) and other background videos */
 .intro .header-video,
 .video-background-section .background-video {
-    position: absolute; /* Changed from relative to absolute for consistent full-section coverage */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures video fills the section, cropping if aspect ratio differs */
-    z-index: 1; /* Puts the video behind the content and overlay */
-    display: block; /* Ensure it behaves as a block element */
+    object-fit: cover;
+    z-index: 1;
+    display: block;
 }
 
-/* NEW: Styles for sticky video visual */
 .video-sticky-visual {
     position: sticky;
-    top: 60px; /* Stick below the navbar */
+    top: 60px;
+    height: calc(100vh - 60px);
     width: 100%;
-    height: calc(100vh - 60px); /* Fill remaining viewport height */
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    z-index: 5; /* Below text overlay */
-    background-color: transparent; /* Ensure it's transparent */
+    z-index: 5;
+    background-color: transparent;
 }
 
-/* NEW: Styles for video text overlay wrapper */
 .video-text-overlay-wrapper {
-    position: absolute; /* Position over the sticky visual */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: auto; /* Height will be determined by content */
-    z-index: 10; /* Above the sticky visual */
-    pointer-events: none; /* Allow clicks to pass through by default */
+    height: 100%;
+    z-index: 10;
+    pointer-events: none;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Align steps to the top of the wrapper */
+    justify-content: flex-start;
 }
 
-/* NEW: Style for individual video steps */
 .video-step {
-    pointer-events: auto; /* Re-enable pointer events for the text content */
-    min-height: 70vh; /* Each step needs enough height to trigger scroll */
+    pointer-events: auto;
+    min-height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0; /* Start hidden */
-    transition: opacity 0.3s ease-in-out; /* Smooth transition for opacity */
-    background-color: transparent; /* Text overlay background */
-    box-shadow: none; /* No shadow for overlay text */
-    margin: 0 auto; /* Center text horizontally */
-    width: calc(100% - 40px); /* Allow some margin */
-    max-width: 800px; /* Match general content max-width */
-    color: var(--secondary-color); /* White text for contrast over dark video */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Add text shadow for readability */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    background-color: transparent;
+    box-shadow: none;
+    margin: 0 auto;
+    width: calc(100% - 40px);
+    max-width: 800px;
+    color: var(--secondary-color);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .video-step.is-active {
-    opacity: 1; /* Make active step visible */
+    opacity: 1;
 }
 
-/* --- Two-Column Layout for Narrative Sections --- */
+.lottie-text-overlay-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.lottie-step {
+    pointer-events: auto;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    background-color: transparent;
+    box-shadow: none;
+    margin: 0 auto;
+    width: calc(100% - 40px);
+    max-width: 800px;
+    color: var(--secondary-color);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.lottie-step.is-active {
+    opacity: 1;
+}
+
 .two-column-layout {
     display: flex;
-    flex-direction: row; /* Default to row for larger screens */
-    align-items: stretch; /* Stretch items to fill height */
+    flex-direction: row;
+    align-items: stretch;
     justify-content: space-between;
-    min-height: 100vh; /* Ensure these sections are tall enough for two columns */
-    padding: 0; /* Remove padding from section itself, columns will have it */
+    min-height: 100vh;
+    padding: 0;
 }
 
 .two-column-layout .content-column {
-    flex: 1; /* Take equal space */
-    max-width: 20%; /* Changed from 50% to 20% for smaller text column */
-    display: flex; /* Use flex to center content vertically within its column */
+    flex: 1;
+    max-width: 20%;
+    display: flex;
     align-items: center;
     justify-content: center;
-    padding: 30px; /* Padding for text content */
-    background-color: var(--bg-color); /* Background for text column */
+    padding: 30px;
+    background-color: var(--bg-color);
     color: var(--text-color);
 }
 
 .two-column-layout .visual-column {
-    flex: 1; /* Take equal space */
-    max-width: 80%; /* Changed from 50% to 80% to fill remaining space */
-    position: relative; /* For absolute positioning of visuals */
-    overflow: hidden; /* Hide overflow from visuals */
-    background-color: var(--primary-color); /* Dark background for visuals */
+    flex: 1;
+    max-width: 80%;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--primary-color);
+    min-height: 100vh;
 }
 
-/* Override default content styling for two-column layout */
 .two-column-layout .content {
-    background-color: transparent; /* No background for content box within column */
-    box-shadow: none; /* No shadow */
-    margin: 0; /* No auto margins */
-    width: 100%; /* Fill width */
-    max-width: none; /* Remove max-width constraint */
-    text-align: left; /* Left align text within the content box */
-    padding: 0; /* Remove content box padding, column provides it */
+    background-color: transparent;
+    box-shadow: none;
+    margin: 0;
+    width: 100%;
+    max-width: none;
+    text-align: left;
+    padding: 0;
 }
 
-/* NEW: Styles for video contained within visual-column */
 .video-contained-visual {
-    position: absolute; /* Position absolutely within the visual-column */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -377,27 +418,24 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden; /* Hide any overflow */
+    overflow: hidden;
 }
 
 .video-contained-visual .contained-video {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Ensures the whole video is visible, letterboxing if necessary */
+    object-fit: contain;
     display: block;
 }
 
-/* Ensure Lottie player fills its container, scale down on smaller screens */
 .two-column-layout .lottie-animation > div,
 .two-column-layout .video-contained-visual > video {
     width: 100%;
     height: 100%;
-    max-width: 100%; /* Ensure they don't exceed container width */
-    max-height: 100%; /* Ensure they don't exceed container height */
+    max-width: 100%;
+    max-height: 100%;
 }
 
-
-/* Overlay for visual column */
 .two-column-layout .visual-column::before {
     content: '';
     position: absolute;
@@ -405,21 +443,16 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3); /* Lighter overlay for visuals */
+    background: rgba(0, 0, 0, 0.3);
     z-index: 5;
 }
 
-
-/* --- Media Queries for Fine-tuning Responsiveness --- */
-
-/* Extra large devices (desktops, 1200px and up) */
 @media (min-width: 1200px) {
     .content {
         max-width: 900px;
     }
 }
 
-/* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
     .content {
         padding: 2em 1.5em;
@@ -427,77 +460,109 @@ body {
     }
 }
 
-/* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
     .content {
         padding: 2em 1.5em;
         max-width: 650px;
-    }
-    .intro h1 {
-        font-size: clamp(2rem, 7vw, 3.5rem);
     }
     .two-column-layout .content-column {
         padding: 20px;
     }
 }
 
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) {
+@media (max-width: 767.98px) {
+    .story-section {
+        min-height: 80vh;
+        padding: 3vh 20px;
+    }
+    .story-section.lottie-scene {
+        min-height: 80vh;
+        height: 80vh;
+        overflow: hidden;
+    }
     .content {
         padding: 1.8em 1.2em;
         max-width: 95%;
     }
-    .intro h1 {
-        font-size: clamp(1.8rem, 6.5vw, 3rem);
-    }
     .intro p {
         font-size: var(--font-size-p);
     }
-
-    /* Stack two-column layout vertically on small screens */
+    .desktop-only {
+        display: none;
+    }
+    .mobile-only {
+        display: block;
+    }
+    .intro .header-video,
+    .video-background-section .background-video {
+        object-fit: contain;
+    }
+    .video-sticky-visual {
+        height: 50vh;
+        z-index: 1;
+    }
     .two-column-layout {
         flex-direction: column;
-        min-height: auto; /* Allow height to adjust to content */
+        min-height: 80vh;
     }
     .two-column-layout .content-column {
-        max-width: 100%; /* Take full width */
-        min-height: 50vh; /* Ensure each part has some height */
-        background-color: transparent; /* Make content column transparent */
-        color: var(--secondary-color); /* Change text color to white */
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Add text shadow for readability */
-        position: relative; /* Establish positioning context for z-index */
-        z-index: 10; /* Ensure content column is above visual column */
+        max-width: 100%;
+        min-height: 30vh;
+        height: auto;
+        background-color: transparent;
+        color: var(--secondary-color);
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        position: relative;
+        z-index: 10;
     }
     .two-column-layout .visual-column {
-        max-width: 100%; /* Take full width */
-        min-height: 50vh; /* Ensure each part has some height */
-        z-index: 1; /* Ensure visual column is behind content column */
+        max-width: 100%;
+        min-height: 50vh;
+        height: 50vh;
+        z-index: 1;
     }
-    .two-column-layout .visual-column {
-        height: 50vh; /* Fixed height for visual on small screens */
+    .two-column-layout .lottie-animation > div {
+        height: 100%;
+        object-fit: contain;
+    }
+    .lottie-animation {
+        height: 100%;
+    }
+    .lottie-text-overlay-wrapper {
+        height: 100%;
+        justify-content: space-around;
+    }
+    .video-text-overlay-wrapper {
+        justify-content: flex-end;
     }
     .two-column-layout .content-column {
-        padding: 30px; /* Re-apply padding for stacked content */
+        padding: 30px;
     }
     .two-column-layout .content {
-        text-align: center; /* Center text when stacked on mobile */
-        background-color: transparent; /* Ensure inner content div is also transparent */
-        box-shadow: none; /* Remove shadow from inner content div */
+        text-align: center;
+        background-color: transparent;
+        box-shadow: none;
+    }
+    .video-step,
+    .lottie-step {
+        min-height: 20vh;
     }
 }
 
-/* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
     .story-section {
-        padding: 3vh 15px;
+        min-height: 70vh;
+        padding: 2vh 15px;
+    }
+    .story-section.lottie-scene {
+        min-height: 70vh;
+        height: 70vh;
+        overflow: hidden;
     }
     .content {
         padding: 1.5em 1em;
         max-width: 100%;
         margin: 10px auto;
-    }
-    .intro h1 {
-        font-size: clamp(1.5rem, 6vw, 2.5rem);
     }
     .intro p {
         font-size: 0.95em;
@@ -507,95 +572,124 @@ body {
     }
     .content p {
         font-size: 0.9em;
-        /* Add text shadow for readability over transparent background */
         text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-        color: var(--secondary-color); /* Change text color to white for better contrast */
+        color: var(--secondary-color);
     }
-
-    /* Stack two-column layout vertically on very small screens */
+    .desktop-only {
+        display: none;
+    }
+    .mobile-only {
+        display: block;
+    }
     .two-column-layout {
         flex-direction: column;
-        min-height: auto;
+        min-height: 75vh;
     }
     .two-column-layout .content-column {
         max-width: 100%;
-        min-height: 25vh; /* Made content column smaller */
-        height: auto; /* Allow height to adjust to content */
-        background-color: transparent; /* Made content column transparent */
-        padding: 20px; /* Keep padding for text */
-        display: flex; /* Keep flex for centering */
+        min-height: 25vh;
+        height: auto;
+        background-color: transparent;
+        padding: 20px;
+        display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--secondary-color); /* Ensure text color is white */
-        position: relative; /* Establish positioning context for z-index */
-        z-index: 10; /* Ensure content column is above visual column */
+        color: var(--secondary-color);
+        position: relative;
+        z-index: 10;
     }
     .two-column-layout .visual-column {
         max-width: 100%;
-        min-height: 75vh; /* Made visual column larger to compensate */
-        height: auto; /* Allow content to dictate height */
-        z-index: 1; /* Ensure visual column is behind content column */
+        min-height: 50vh;
+        height: 50vh;
+        z-index: 1;
+    }
+    .two-column-layout .lottie-animation > div {
+        height: 100%;
+        object-fit: contain;
+    }
+    .lottie-animation {
+        height: 100%;
+    }
+    .lottie-text-overlay-wrapper {
+        height: 100%;
+        justify-content: space-around;
+    }
+    .video-text-overlay-wrapper {
+        justify-content: flex-end;
     }
     .two-column-layout .content {
         text-align: center;
-        /* Ensure the inner content div also has transparent background */
         background-color: transparent;
         box-shadow: none;
-        padding: 0; /* Remove inner content padding, column provides it */
+        padding: 0;
+    }
+    .video-step,
+    .lottie-step {
+        min-height: 20vh;
     }
 }
 
-/* Landscape orientation for smaller devices */
 @media screen and (max-height: 500px) and (orientation: landscape) {
     .story-section {
-        min-height: auto;
-        padding: 5vh 20px;
+        min-height: 70vh;
+        padding: 2vh 20px;
+    }
+    .story-section.lottie-scene {
+        min-height: 70vh;
+        height: 70vh;
+        overflow: hidden;
     }
     .content {
         padding: 1em;
         max-width: 80%;
     }
-    .intro h1 {
-        font-size: 2em;
-    }
     .intro p {
         font-size: 1em;
     }
-
+    .desktop-only {
+        display: none;
+    }
+    .mobile-only {
+        display: block;
+    }
     .two-column-layout {
-        min-height: 100vh; /* Keep two columns on landscape small screens if possible */
+        min-height: 70vh;
     }
     .two-column-layout .content-column {
-        min-height: 100vh; /* Adjust for full height */
-        height: auto; /* Allow content to dictate height */
-        max-width: 20%; /* Maintain 20% width for landscape if possible */
-        background-color: transparent; /* Transparent on landscape too */
+        min-height: 100vh;
+        height: auto;
+        max-width: 20%;
+        background-color: transparent;
         color: var(--secondary-color);
         text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-        position: relative; /* Establish positioning context for z-index */
-        z-index: 10; /* Ensure content column is above visual column */
+        position: relative;
+        z-index: 10;
     }
     .two-column-layout .visual-column {
-        min-height: 100vh; /* Adjust for full height */
-        height: auto; /* Allow content to dictate height */
-        max-width: 80%; /* Maintain 80% width for landscape if possible */
-        z-index: 1; /* Ensure visual column is behind content column */
+        min-height: 60vh;
+        height: 60vh;
+        z-index: 1;
+    }
+    .two-column-layout .lottie-animation > div {
+        height: 100%;
+        object-fit: contain;
+    }
+    .lottie-animation {
+        height: 100%;
+    }
+    .lottie-text-overlay-wrapper {
+        height: 100%;
+        justify-content: space-around;
+    }
+    .video-text-overlay-wrapper {
+        justify-content: flex-end;
+    }
+    .video-step,
+    .lottie-step {
+        min-height: 20vh;
     }
 }
-
-/* Adjust font size for textPath specifically on smaller screens if needed */
-@media (max-width: 767.98px) {
-    .curved-header-svg text {
-        font-size: clamp(1.8rem, 6.5vw, 3rem); /* Smaller font on mobile */
-    }
-}
-
-@media (max-width: 575.98px) {
-    .curved-header-svg text {
-        font-size: clamp(1.5rem, 6vw, 2.5rem); /* Even smaller on very small screens */
-    }
-}
-
 
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
